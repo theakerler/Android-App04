@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -15,8 +16,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.theakerler.android_app04.ui.theme.AndroidApp04Theme
@@ -50,7 +57,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     AndroidApp04Theme {
-        NavigationExample()
+//        NavigationExample()
+        TabEjemplo()
     }
 }
 
@@ -84,3 +92,33 @@ fun NavigationExample() {
         Text("Content goes here", modifier = Modifier.padding(paddingValues))
     }
 }
+
+
+@Composable
+fun TabEjemplo() {
+    var selectedTabIndex by remember { mutableStateOf(0) }
+
+    val titulos = listOf("Pestaña 1", "Pestaña 2", "Pestaña 3")
+    Column () {
+        TabRow(selectedTabIndex = selectedTabIndex) {
+            titulos.forEachIndexed { index, title ->
+                Tab(
+                    selected = selectedTabIndex == index,
+                    onClick = { selectedTabIndex = index },
+                    text = { Text(title) }
+                )
+            }
+        }
+        when (selectedTabIndex) {
+            0 -> Text("Contenido 1")
+            1 -> Text("Contenido 2")
+            2 -> Text("Contenido 3")
+        }
+    }
+}
+
+
+
+
+
+
