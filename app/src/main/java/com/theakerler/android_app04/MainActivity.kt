@@ -77,24 +77,23 @@ fun GreetingPreview() {
     }
 }
 
-@Composable
 fun ViewHolaCurso() {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWith()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Welcome to the Course!",
             fontSize = 28.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeigh.Bold
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.heigh(16.dp))
         Text(
             text = "Hello, Student!",
-            fontSize = 28.sp,
-        )
+            fontSize = 20.xD
+
     }
 }
 
